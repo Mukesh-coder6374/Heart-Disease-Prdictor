@@ -16,4 +16,19 @@ A Flask-based machine learning web app to predict the risk of heart disease usin
 
 ## 📦 Requirements
 
-Install all packages using:
+Install all packages using:pip install -r requirements.txt
+
+## 🔧 How to Run (Locally)
+
+```bash
+python HDP.py
+
+📁 Project Structure
+
+📁 templates/
+    └── form.html
+📄 HDP.py
+📄 heart_disease_model.pkl
+📄 requirements.txt
+📄 README.md
+
