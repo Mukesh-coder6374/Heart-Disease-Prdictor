@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heart Disease Predictor</title>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1581090700227-1e8b63f90df1?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2d3436;
+      margin: 0;
+      padding: 0;
+    }
 
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 50px auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #6c5ce7;
+      margin-bottom: 25px;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      color: #2d3436;
+      font-weight: bold;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #fd79a8;
+      box-shadow: 0 0 10px #fd79a8;
+      transition: 0.3s ease;
+    }
+
+    button {
+      background-color: #6c5ce7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a29bfe;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(253, 121, 168, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 15px 15px rgba(253, 121, 168, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(253, 121, 168, 0); }
+    }
+
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #ffeaa7;
+      color: #2d3436;
+      font-size: 18px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2> Heart Disease Predictor using AI</h2>
+    <form action="/predict" method="POST">
+
+      <label>Age</label>
+      <input type="number" name="age" required>
+
+      <label>Sex</label>
+      <select name="sex" required>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select>
+
+      <label>Resting Blood Pressure</label>
+      <input type="number" name="trestbps" required>
+
+      <label>Cholesterol</label>
+      <input type="number" name="chol" required>
+
+      <label>Max Heart Rate (thalch)</label>
+      <input type="number" name="thalch" required>
+
+      <label>ST Depression (oldpeak)</label>
+      <input type="number" name="oldpeak" step="0.1" required>
+
+      <label>Number of Major Vessels (ca)</label>
+      <select name="ca">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+
+      <label>Chest Pain Type</label>
+      <select name="cp">
+        <option value="typical angina">Typical Angina</option>
+        <option value="atypical angina">Atypical Angina</option>
+        <option value="non-anginal pain">Non-Anginal Pain</option>
+      </select>
+
+      <label>Resting ECG</label>
+      <select name="restecg">
+        <option value="normal">Normal</option>
+        <option value="st-t abnormality">ST-T Abnormality</option>
+      </select>
+
+      <label>Slope</label>
+      <select name="slope">
+        <option value="flat">Flat</option>
+        <option value="upsloping">Upsloping</option>
+      </select>
+
+      <label>Thalassemia</label>
+      <select name="thal">
+        <option value="normal">Normal</option>
+        <option value="reversable defect">Reversable Defect</option>
+      </select>
+
+      <button type="submit"> Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result"> {{ prediction }}</div>
+    {% endif %}
+  </div>
+
+</body>
+  </html>
