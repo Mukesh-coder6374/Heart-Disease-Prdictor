@@ -13,7 +13,9 @@ A Flask-based machine learning web app to predict the risk of heart disease usin
 
 - RandomForestClassifier from scikit-learn
 - Trained on the UCI Heart Disease dataset
-
+## 🧠 Model Training
+The model was trained using a Random Forest Classifier.  
+You can find the training code [here](./train_model.py).
 ## 📦 Requirements
 
 Install all packages using:pip install -r requirements.txt
